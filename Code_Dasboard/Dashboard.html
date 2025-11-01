@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NotulenPBL-3 - Dashboard Privat</title>
+  <link rel="stylesheet" href="Dashboard.css" />
+</head>
+
+<body>
+  <div class="container" id="dashboard">
+    <header>
+      <div class="logo">
+        <span>NotulenPBL-3</span>
+      </div>
+
+      <div class="nav-container">
+        <nav class="nav-main">
+          <ul>
+            <li><a href="#" class="active">Beranda</a></li>
+            <li><a href="#">Arsip</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </nav>
+
+        <div class="nav-account">
+          <div class="user-profile" id="userProfile">
+            <div class="user-avatar">AR</div>
+            <span>Arnol Hutagalung</span>
+            <div class="user-dropdown" id="userDropdown">
+              <a href="#" id="logoutBtn">Keluar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="search-container">
+      <div class="search-input">
+        <input type="text" id="searchInput" placeholder="Cari notulen berdasarkan judul, tanggal, atau kata kunci..." />
+        <button class="btn btn-primary" id="searchBtn">Cari</button>
+      </div>
+    </div>
+
+    <div class="dashboard-stats">
+      <div class="stat-card">
+        <div class="stat-number" id="totalNotulen">4</div>
+        <div class="stat-label">Total Notulen</div>
+      </div>
+    </div>
+
+    <div class="filter-options">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="week">Minggu Ini</button>
+      </div>
+    </div>
+
+    <div class="rincian">
+      <div class="page-header">
+        <h2>Notulen Privat Terbaru</h2>
+        <button class="btn btn-primary" id="addNotulenHeaderBtn">Tambah Notulen Private</button>
+      </div>
+      <div class="notulen-list" id="notulenList"></div>
+    </div>
+    <div class="rincian-public">
+      <div class="page-header">
+        <h2>Notulen Public Terbaru</h2>
+        <button class="btn btn-success" id="addNotulenPublikBtn">Tambah Notulen Publik</button>
+      </div>
+      <div class="notulen-list" id="notulenPublicList"></div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About NotulenPBL-3</h3>
+          <p>
+            NotulenPBL-3 adalah aplikasi pencatatan notulen rapat yang dirancang untuk memudahkan
+            pencatatan, pengelolaan, dan pembagian
+            notulen rapat secara digital.
+          </p>
+          <p>
+            Aplikasi ini menyediakan fitur pencatatan notulen privat dan publik, pencarian notulen
+            berdasarkan kata kunci, serta
+            pengelolaan peserta rapat.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Kontak</h3>
+          <p>Email: support@notulenpbl3.com</p>
+          <p>Telepon: (+62) 1234-5678</p>
+          <p>Alamat: Jl. Tanjung Buntung, Batam</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 NotulenPBL-3. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Modal untuk membuat notulen privat baru -->
+    <div class="modal" id="notulenModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Buat Notulen Privat Baru</h2>
+          <button class="close-modal">&times;</button>
+        </div>
+        <form id="notulenForm">
+          <div class="form-group">
+            <label for="judulRapat">Judul Rapat</label>
+            <input type="text" id="judulRapat" required />
+          </div>
+
+          <div class="form-group">
+            <label for="tanggalRapat">Tanggal Rapat</label>
+            <input type="date" id="tanggalRapat" required />
+          </div>
+
+          <div class="form-group">
+            <label for="waktuMulai">Waktu Mulai</label>
+            <input type="time" id="waktuMulai" required />
+          </div>
+
+          <div class="form-group">
+            <label for="waktuSelesai">Waktu Selesai</label>
+            <input type="time" id="waktuSelesai" required />
+          </div>
+
+          <div class="form-group">
+            <label for="tempatRapat">Tempat Rapat</label>
+            <input type="text" id="tempatRapat" />
+          </div>
+
+          <div class="form-group">
+            <label for="pesertaRapat">Peserta Rapat</label>
+            <textarea id="pesertaRapat" placeholder="Masukkan daftar peserta rapat, dipisahkan dengan koma"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="isiNotulen">Isi Notulen</label>
+            <textarea id="isiNotulen"
+              placeholder="Tuliskan poin-poin penting, keputusan, dan penanggung jawab tindak lanjut..."
+              required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="lampiran">Lampiran</label>
+            <input type="file" id="lampiran" />
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-danger" id="cancelBtn">Batal</button>
+            <button type="submit" class="btn btn-primary">Simpan Notulen</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal untuk membuat notulen publik baru -->
+    <div class="modal" id="notulenPublikModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Buat Notulen Publik Baru</h2>
+          <button class="close-modal" id="closePublikModal">&times;</button>
+        </div>
+
+        <form id="notulenPublikForm">
+          <div class="form-group">
+            <label for="judulRapatPublik">Judul Rapat</label>
+            <input type="text" id="judulRapatPublik" required />
+          </div>
+
+          <div class="form-group">
+            <label for="tanggalRapatPublik">Tanggal Rapat</label>
+            <input type="date" id="tanggalRapatPublik" required />
+          </div>
+
+          <div class="form-group">
+            <label for="waktuMulaiPublik">Waktu Mulai</label>
+            <input type="time" id="waktuMulaiPublik" required />
+          </div>
+
+          <div class="form-group">
+            <label for="waktuSelesaiPublik">Waktu Selesai</label>
+            <input type="time" id="waktuSelesaiPublik" required />
+          </div>
+
+          <div class="form-group">
+            <label for="tempatRapatPublik">Tempat Rapat</label>
+            <input type="text" id="tempatRapatPublik" />
+          </div>
+
+          <div class="form-group">
+            <label for="pesertaRapatPublik">Peserta Rapat</label>
+            <textarea id="pesertaRapatPublik" placeholder="Masukkan daftar peserta rapat..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="isiNotulenPublik">Isi Notulen</label>
+            <textarea id="isiNotulenPublik" required placeholder="Tuliskan hasil dan keputusan rapat..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="lampiranPublik">Lampiran</label>
+            <input type="file" id="lampiranPublik" />
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="btn btn-danger" id="cancelPublikBtn">Batal</button>
+            <button type="submit" class="btn btn-primary">Simpan Notulen Publik</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal konfirmasi hapus notulen -->
+    <div class="delete-modal" id="deleteModal">
+      <div class="delete-content">
+        <div class="delete-icon">!</div>
+        <h2>Hapus Notulen</h2>
+        <p id="deleteMessage">Apakah Anda yakin ingin menghapus notulen ini? Tindakan ini tidak dapat
+          dibatalkan.</p>
+        <div class="delete-actions">
+          <button class="btn btn-danger" id="confirmDeleteBtn">Ya, Hapus</button>
+          <button class="btn btn-primary" id="cancelDeleteBtn">Batal</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup Login Privat -->
+    <div id="loginPopup" class="login-overlay">
+      <div class="login-box">
+        <h2>Verifikasi Akses</h2>
+        <p>Masukkan ID dan Password untuk membuka data privat</p>
+
+        <input type="text" id="popupId" placeholder="Masukkan ID Anda" required>
+        <input type="password" id="popupPw" placeholder="Masukkan Password Anda" required>
+
+        <p id="loginMsg">ID atau Password salah!</p>
+
+        <div class="login-actions">
+          <button class="btn btn-danger" id="cancelLogin">Batal</button>
+          <button class="btn btn-primary" id="confirmLogin">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="Dashboard.js"></script>
+</body>
+
+</html>

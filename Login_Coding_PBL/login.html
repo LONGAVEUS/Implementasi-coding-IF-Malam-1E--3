@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login & Register</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="container" id="login-container">
+        <div class="toggle-box login-toggle">
+          <h1>Hello, Welcome!</h1>
+          <p>Don't have an account?</p>
+          <button onclick="showRegister()">Register</button>
+        </div>
+
+        <div class="form-box login">
+          <h2>Login</h2>
+          <label for="login-username" style="display: none">Username</label>
+          <input type="text" placeholder="Username" id="login-username" required />
+
+          <label for="login-password" style="display: none">Password</label>
+          <input type="password" placeholder="Password" id="login-password" required />
+
+          <div class="forgot-link">
+            <a href="#">Forgot Password?</a>
+          </div>
+
+          <button onclick="login()">Login</button>
+
+          <p class="social-text">or login with social platforms</p>
+
+          <div class="social-link">
+            <a href="#" title="Google">G</a>
+            <a href="#" title="Facebook">F</a>
+            <a href="#" title="LinkedIn">In</a>
+            <a href="#" title="X/Twitter">X</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" id="register-container" style="display: none">
+        <div class="form-box register">
+          <h2>Registration</h2>
+
+          <label for="register-username" style="display: none">Username</label>
+          <input type="text" placeholder="Username" id="register-username" required />
+
+          <label for="register-email" style="display: none">Email</label>
+          <input type="email" placeholder="Email" id="register-email" required />
+
+          <label for="register-password" style="display: none">Password</label>
+          <input type="password" placeholder="Password" id="register-password" required />
+
+          <label for="register-phone" style="display: none">Phone Number</label>
+          <input type="tel" placeholder="Phone Number" class="number" id="register-phone" required />
+
+          <button onclick="register()">Register</button>
+
+          <p class="social-text">or register with social platforms</p>
+
+          <div class="social-link">
+            <a href="#" title="Google">G</a>
+            <a href="#" title="Facebook">F</a>
+            <a href="#" title="LinkedIn">In</a>
+            <a href="#" title="X/Twitter">X</a>
+          </div>
+        </div>
+
+        <div class="toggle-box register-toggle">
+          <h1>Hello, Welcome!</h1>
+          <p>Already have an account?</p>
+          <button onclick="showLogin()">Login</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="login.js"></script>
+</html>
